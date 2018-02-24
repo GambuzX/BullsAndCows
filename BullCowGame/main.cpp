@@ -14,8 +14,7 @@ int main()
 	//get a guess from the player
 	string guess = "";
 	cout << "What's your guess? ";
-	cin >> guess;
-	cin.ignore(10000, '\n'); //clear input stream
+	getline(cin, guess);
 
 	//repeat the guess back to the player
 	cout << "Your guess was: " << guess;
