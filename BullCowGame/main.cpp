@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
+#include "FBullCowGame.h"
 
 void PrintIntro();
 void PlayGame();
 std::string GetGuess();
 bool AskToPlayAgain();
+
+FBullCowGame BCGame; // instantiates a new game
 
 //The entry point for our application
 int main()
@@ -33,6 +36,8 @@ void PrintIntro()
 
 void PlayGame()
 {
+	int MaxTries = BCGame.GetMaxTries();
+
 	// Loop for the number of turns asking for guesses
 	constexpr int NUMBER_OF_TURNS = 5;
 	for (int i = 1; i <= NUMBER_OF_TURNS; i++)
@@ -44,9 +49,10 @@ void PlayGame()
 
 std::string GetGuess()
 {
+	int CurrentTry = BCGame.GetCurrentTry();
 	//Get a guess from the player
 	std::string guess = "";
-	std::cout << "What's your guess? ";
+	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
 	std::getline(std::cin, guess);	
 	return guess;
 }

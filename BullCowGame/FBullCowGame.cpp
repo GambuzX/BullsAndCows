@@ -5,15 +5,9 @@ void FBullCowGame::Reset()
 	return;
 }
 
-int FBullCowGame::GetMaxTries()
-{
-	return 0;
-}
+int FBullCowGame::GetMaxTries(){return MyMaxTries;}
 
-int FBullCowGame::GetCurrentTry()
-{
-	return 0;
-}
+int FBullCowGame::GetCurrentTry(){return MyCurrentTry;}
 
 bool FBullCowGame::IsGameWon()
 {
