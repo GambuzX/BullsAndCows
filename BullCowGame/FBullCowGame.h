@@ -6,11 +6,14 @@ class FBullCowGame
 public:
 	FBullCowGame();//Constructor
 
-	void Reset(); //TODO make a more rich return value.
 	int GetMaxTries() const;
 	int GetCurrentTry() const;
 	bool IsGameWon() const;
+
+	void Reset(); //TODO make a more rich return value.
 	bool IsGuessCorrect(std::string);
+	// provide a method for counting bulls and cows, and increasing turn number
+
 
 private:
 	int MyCurrentTry = 1;
