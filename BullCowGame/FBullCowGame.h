@@ -4,6 +4,8 @@
 class FBullCowGame
 {
 public:
+	FBullCowGame();//Constructor
+
 	void Reset(); //TODO make a more rich return value.
 	int GetMaxTries() const;
 	int GetCurrentTry() const;
