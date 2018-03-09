@@ -4,9 +4,11 @@ using int32 = int;
 
 FBullCowGame::FBullCowGame(){ Reset();}
 
-int32 FBullCowGame::GetMaxTries() const {return MyMaxTries;}
+int32 FBullCowGame::GetMaxTries() const { return MyMaxTries;}
 
-int32 FBullCowGame::GetCurrentTry() const {return MyCurrentTry;}
+int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry;}
+
+int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length();}
 
 
 void FBullCowGame::Reset()
@@ -27,7 +29,7 @@ bool FBullCowGame::IsGameWon() const
 	return false;
 }
 
-bool FBullCowGame::IsGuessCorrect(FString)
+bool FBullCowGame::IsGuessCorrect(FString) const
 {
 	return false;
 }
