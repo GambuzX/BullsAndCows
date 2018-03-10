@@ -13,7 +13,7 @@ using int32 = int;
 
 void PrintIntro();
 void PlayGame();
-FText GetGuess();
+FText GetValidGuess();
 bool AskToPlayAgain();
 
 FBullCowGame BCGame; // instantiates a new game
@@ -50,30 +50,46 @@ void PlayGame()
 	constexpr int32 NUMBER_OF_TURNS = 5;
 	for (int32 i = 1; i <= NUMBER_OF_TURNS; i++) // TODO change from FOR to WHILE loop
 	{
-		FText guess = GetGuess();
-
-		EGuessStatus status = BCGame.CheckGuessValidity(guess);
+		FText guess = GetValidGuess();
 
 		//Submit valid guess to the game and receive counts
 		FBullCowCount BullCowCount = BCGame.SubmitGuess(guess);
 
 		//Print number of bulls and cows
 		std::cout << "Bulls =  " << BullCowCount.Bulls;
-		std::cout << ". Cows =  " << BullCowCount.Cows << std::endl;
-
+		std::cout << ". Cows =  " << BullCowCount.Cows << "\n\n";
 	}
-
 	// TODO summarise game
 }
 
-std::string GetGuess()  //TODO change to GetValidGuess
+// loop until the user inputs a valid guess
+std::string GetValidGuess()
 {
-	int32 CurrentTry = BCGame.GetCurrentTry();
-	//Get a guess from the player
-	FText guess = "";
-	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
-	std::getline(std::cin, guess);	
-	return guess;
+	EGuessStatus Status = EGuessStatus::Invalid_Status;
+	do {
+		//Get a guess from the player
+		int32 CurrentTry = BCGame.GetCurrentTry();
+		FText Guess = "";
+		std::cout << "Try " << CurrentTry << ". Enter your guess: ";
+		std::getline(std::cin, Guess);
+
+		//Check guess validity
+		Status = BCGame.CheckGuessValidity(Guess);
+		switch (Status) {
+		case EGuessStatus::Wrong_Length:
+			std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+			break;
+		case EGuessStatus::Not_Lowercase:
+			std::cout << "Please enter a lowercase word.\n";
+			break;
+		case EGuessStatus::Not_Isogram:
+			std::cout << "Please enter a word with no repeating letters.\n";
+			break;
+		default:
+			return Guess;
+		}
+		std::cout << std::endl;
+	} while (Status != EGuessStatus::OK); // keep looping until we get no errors
 }
 
 bool AskToPlayAgain()
