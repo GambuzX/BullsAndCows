@@ -24,10 +24,7 @@ void FBullCowGame::Reset()
 	return;
 }
 
-bool FBullCowGame::IsGameWon() const
-{
-	return false;
-}
+bool FBullCowGame::IsGameWon() const { return bIsGameWon; }
 
 EGuessStatus FBullCowGame::CheckGuessValidity(FString guess) const
 {
@@ -56,9 +53,14 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	int32 HiddenWordLength = GetHiddenWordLength();
 	int32 GuessLength = (int32) Guess.length();
 
+	//If the guess is correct
+	if (Guess == MyHiddenWord)
+		bIsGameWon = true;
+	else
+		bIsGameWon = false;
+
 	//loop through all letters in the hidden word
 	for (int32 MHWChar = 0; MHWChar < HiddenWordLength; MHWChar++) {
-
 		//compare letters against the guess
 		for (int32 GChar = 0; GChar < GuessLength; GChar++) {
 			if (MyHiddenWord[MHWChar] == Guess[GChar]) {
