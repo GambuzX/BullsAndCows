@@ -13,10 +13,11 @@ int32 FBullCowGame::GetHiddenWordLength() const { return (int32) MyHiddenWord.le
 
 void FBullCowGame::Reset()
 {
-	const int32 MAX_TRIES = 8;
+	const int32 MAX_TRIES = 3;
 	MyMaxTries = MAX_TRIES;
 
 	MyCurrentTry = 1;
+	bIsGameWon = false;
 
 	const FString HIDDEN_WORD = "gambuzino";
 	MyHiddenWord = HIDDEN_WORD;
@@ -30,10 +31,10 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString guess) const
 {
 	if (false) //if the guess isnt an isogram
 	{
-		return EGuessStatus::Not_Isogram;
+		return EGuessStatus::Not_Isogram; //TODO write function
 	}
 	else if (false) {	//if the guess isnt all lowercase
-		return EGuessStatus::Not_Lowercase;
+		return EGuessStatus::Not_Lowercase; //TODO write function
 	}
 	else if (guess.length() != GetHiddenWordLength()) {//if the guess length is wrong
 		return EGuessStatus::Wrong_Length;
