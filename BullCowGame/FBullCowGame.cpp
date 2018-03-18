@@ -80,14 +80,22 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	return BullCowCount;
 }
 
-bool FBullCowGame::IsIsogram(FString guess) const
+bool FBullCowGame::IsIsogram(FString Word) const
 {
 	//Treat 0 and 1 letter words as isograms
+	if (Word.length() <= 1)	return true;
 
-	//for each char in the guess string, check against the chars table for repetitions
-	//for each char in guess
-		//if char was already seen, return false
-		//if char not seen, record it as seen
+	TMap<char, bool> LetterSeen;
 
+	for (auto Letter : Word)  //for all letters in the word
+	{
+		Letter = tolower(Letter); //handle mixed case
+		if (LetterSeen[Letter]) //if the letter is is the map
+		{
+			return false; // we do NOT have an isogram
+		} else	{
+			LetterSeen[Letter] = true;
+		}
+	}
 	return true;
 }
