@@ -38,6 +38,7 @@ public:
 
 
 private:
+	bool IsIsogram(FString) const;
 	int32 MyCurrentTry = 1;
 	int32 MyMaxTries = 5;
 	FString MyHiddenWord;
