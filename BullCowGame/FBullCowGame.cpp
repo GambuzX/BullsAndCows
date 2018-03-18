@@ -1,7 +1,12 @@
+/* Contains the definitions for the FBullCowGame class functions */
+
+#pragma once
+
 #include "FBullCowGame.h"
 #include <map>
 #define TMap std::map
 
+//to make syntax Unreal friendly
 using int32 = int;
 
 FBullCowGame::FBullCowGame(){ Reset();}
@@ -21,7 +26,7 @@ void FBullCowGame::Reset()
 	MyCurrentTry = 1;
 	bIsGameWon = false;
 
-	const FString HIDDEN_WORD = "donkey";
+	const FString HIDDEN_WORD = "donkey"; //this MUST be an Isogram
 	MyHiddenWord = HIDDEN_WORD;
 
 	return;
