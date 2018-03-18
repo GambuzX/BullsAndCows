@@ -4,6 +4,8 @@
 
 #include "FBullCowGame.h"
 #include <map>
+#include <time.h>
+#include <stdlib.h> 
 #define TMap std::map
 
 //to make syntax Unreal friendly
@@ -26,7 +28,7 @@ void FBullCowGame::Reset()
 	MyCurrentTry = 1;
 	bIsGameWon = false;
 
-	const FString HIDDEN_WORD = "donkey"; //this MUST be an Isogram
+	FString HIDDEN_WORD = GenerateRandomHiddenWord(HiddenWordsList, HiddenWordsCount); //this MUST be an Isogram
 	MyHiddenWord = HIDDEN_WORD;
 
 	return;
@@ -83,6 +85,14 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 	}
 
 	return BullCowCount;
+}
+
+FString FBullCowGame::GenerateRandomHiddenWord(FString WordList[], int arraySize) const
+{
+	srand(time(NULL));
+	int index = rand() % arraySize;
+	FString hiddenWord = WordList[index];
+	return hiddenWord;
 }
 
 bool FBullCowGame::IsIsogram(FString Word) const

@@ -4,6 +4,7 @@ The game is a simple guess the word game based on MasterMind */
 #pragma once
 
 #include <string>
+#include <vector>
 
 //to make syntax Unreal friendly
 using FString = std::string;
@@ -44,11 +45,13 @@ public:
 
 
 private:
+	FString GenerateRandomHiddenWord(FString WordList[], int arraySize) const;
 	bool IsIsogram(FString) const;
 	bool IsLowercase(FString) const;
 
 	int32 MyCurrentTry = 1;
 	FString MyHiddenWord;
 	bool bIsGameWon = false;
-
+	FString HiddenWordsList[11] = { "gambuzino", "donkey", "crow", "computer", "blanket", "rice", "lamb", "bag", "planet", "plank", "bug" };
+	int32 HiddenWordsCount = 11; //This count must match the size of the above array!!!
 };
