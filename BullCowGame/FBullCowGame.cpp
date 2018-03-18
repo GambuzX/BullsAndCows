@@ -15,13 +15,13 @@ int32 FBullCowGame::GetHiddenWordLength() const { return (int32) MyHiddenWord.le
 
 void FBullCowGame::Reset()
 {
-	const int32 MAX_TRIES = 3;
+	const int32 MAX_TRIES = 5;
 	MyMaxTries = MAX_TRIES;
 
 	MyCurrentTry = 1;
 	bIsGameWon = false;
 
-	const FString HIDDEN_WORD = "gambuzino";
+	const FString HIDDEN_WORD = "donkey";
 	MyHiddenWord = HIDDEN_WORD;
 
 	return;
