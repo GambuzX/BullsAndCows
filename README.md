@@ -11,4 +11,8 @@ You are only given the length of the hidden word and, for each guess you make, t
 * A bull is a correct letter in the right place.
 * A cow is a correct letter in the wrong place.
 
+### Technologies
+* C++
+* Microsoft Visual Studio
+
 #### Have fun!
