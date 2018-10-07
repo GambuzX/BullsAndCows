@@ -1,7 +1,7 @@
 # BullsAndCows :cow: :video_game:
 
 ### Context
-Game developed while following the "Complete C# Unity Developer" online course. I took the lectures as a basis to create something to my own liking and this was the result.
+Game developed while following the "The Unreal Engine Developer Course" online course. I took the lectures as a basis to create something to my own liking and this was the result.
 
 ### Description
 Console word-guessing game based on MasterMind.
